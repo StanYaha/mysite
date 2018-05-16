@@ -1,0 +1,15 @@
+certifi==2018.1.18
+chardet==3.0.4
+Django==1.8.6
+django-sortedm2m==1.5.0
+django-taggit==0.17.1
+easy-thumbnails==2.3
+ExifRead==2.1.2
+idna==2.6
+Markdown==2.6.2
+pili2==2.1.0
+Pillow==5.1.0
+pytz==2018.3
+qiniu==7.2.2
+requests==2.18.4
+urllib3==1.22
