@@ -1,0 +1,105 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{#{% load thumbnail %}#}
+{% block headerlink %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>画廊</title>
+{#    <script src="{% static '/gallery/Gallery-2.21.3/js/mootools-core.js' %}"></script>#}
+{#    <script src="{% static '/gallery/Gallery-2.21.3/js/mediabox.js' %}"></script>#}
+    {#    <link rel="stylesheet" href="{% static '/gallery/Gallery-2.21.3/css/index.css' %}">#}
+
+    <link href="{% static "js/mootools-core.js" %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static "js/mediabox.js" %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static "css/index.css" %}" rel="stylesheet" type="text/css" media="all" />
+
+    <style>
+        .img1 {
+            width: 75px;
+            height: 75px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<body>
+<div style="background:#FFF; padding:50px; height:460px">
+    <div class="mod_gallerylist">
+        {% if photolist %}
+            {% for image in photolist %}
+                <div class="layout_default">
+                    <p class="info"><span class="date"></span> <span class="author"></span></p>
+                    <div class="image_container">
+                        <a href="{{ image.image_url }}" rel="lightbox[ostec]" title="{{ image.title }}"> <img
+                                class="img1" src="{{ image.image_url }}" alt="{{ image.title }}"> </a>
+                    </div>
+                    <div class="meta"><a href="#" target="_blank">{{ image.title }}</a></div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div><!--end demo-wrapper-->
+
+
+<script type="text/javascript">
+    Mediabox.scanPage = function () {
+        var links = $$("a").filter(function (el) {
+            return el.rel && el.rel.test(/^lightbox/i);
+        });
+        $$(links).mediabox({/* Put custom options here */}, null, function (el) {
+            var rel0 = this.rel.replace(/[[]|]/gi, " ");
+            var relsize = rel0.split(" ");
+            return (this == el) || ((this.rel.length > 8) && el.rel.match(relsize[1]));
+        });
+    };
+    window.addEvent("domready", Mediabox.scanPage);
+</script>
+</body>
+{% endblock %}
+
+{#{% extends 'blog/base.html' %}#}
+{#{% load static %}#}
+{#{% load thumbnail %}#}
+{##}
+{#{% block headerlink %}#}
+{#    <meta charset="utf-8">#}
+{#    <meta http-equiv="X-UA-Compatible" content="IE=edge">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>Photo Gallery</title>#}
+{#    <link rel="stylesheet" href="{% static '/gallery/Gallery-2.21.3/css/blueimp-gallery.min.css' %}">#}
+{#    <link rel="stylesheet" href="{% static '/gallery/style.css' %}">#}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#<body>#}
+{#    <!-- The Gallery as lightbox dialog, should be a child element of the document body -->#}
+{#    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">#}
+{#        <div class="slides"></div>#}
+{#        <h3 class="title"></h3>#}
+{#        <a class="prev">‹</a>#}
+{#        <a class="next">›</a>#}
+{#        <a class="close">×</a>#}
+{#        <a class="play-pause"></a>#}
+{#        <ol class="indicator"></ol>#}
+{#    </div>#}
+{#    <div id="links">#}
+{#      {% if image_list %}#}
+{#      {% for image in image_list %}<a ref="{{ image.original.url }}" title="{{ image.title }}"><img src="{{ image.original | thumbnail_url:'75x75' }}" alt="{{ image.title }}"></a>{% endfor %}#}
+{#      {% endif %}#}
+{#        <img src="http://p7f9vi21v.bkt.clouddn.com/22f3e8deb101ee9d6c39d968ff4117b3.jpg ">#}
+{#        <img src="http://p7f9vi21v.bkt.clouddn.com/33d10ddbf84a3b8e3c703c11539161b6.jpg ">#}
+{#        <img src="http://p7f9vi21v.bkt.clouddn.com/374ce4e70ad9b84e93b34a1b8b046cc3.jpg ">#}
+{#    </div>#}
+{#    <script src="{% static '/gallery/Gallery-2.21.3/js/blueimp-gallery.min.js' %}"></script>#}
+{#    <script>#}
+{#      document.getElementById('links').onclick = function (event) {#}
+{#          event = event || window.event;#}
+{#          var target = event.target || event.srcElement,#}
+{#              link = target.src ? target.parentNode : target,#}
+{#              options = {index: link, event: event},#}
+{#              links = this.getElementsByTagName('a');#}
+{#          blueimp.Gallery(links, options);#}
+{#      };#}
+{#    </script>#}
+{#  </body>#}
+{#{% endblock %}#}

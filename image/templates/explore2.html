@@ -1,0 +1,97 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+{% block headerlink %}
+<!--轮播-->
+   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link href="{% static "css/photo.css" %}" rel="stylesheet" type="text/css" media="all" />
+
+
+</head>
+        {% endblock %}
+{% block content %}
+
+<body>
+
+<!--轮播-->
+<div id="myCarousel" class="carousel slide" style="width:100%;">
+   <!-- 轮播（Carousel）指标 -->
+   <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+	  <li data-target="#myCarousel" data-slide-to="3"></li>
+	  <li data-target="#myCarousel" data-slide-to="4"></li>
+   </ol>   
+   <!-- 轮播（Carousel）项目 -->
+   <div class="carousel-inner">
+      <div id="pic0" class="item active">
+<img src="http://www.jq22.com/img/cs/500x300a.png">
+      </div>
+      <div id="pic1" class="item">
+<img src="http://www.jq22.com/img/cs/500x300c.png">
+      </div>
+      <div id="pic2" class="item">
+<img src="http://www.jq22.com/img/cs/500x300b.png">
+      </div>
+	  <div id="pic3" class="item">
+<img src="http://www.jq22.com/img/cs/500x300c.png">
+      </div>
+      <div id="pic4" class="item">
+<img src="http://www.jq22.com/img/cs/500x300d.png">
+      </div>
+   </div>
+
+</div> 
+
+<script>
+var i=0;
+var c = null;
+    c = setTimeout(carousel,1000);//开始执行
+    function carousel()
+    {
+    	
+       clearTimeout(c);//清除定时器
+      
+      $("#pic"+i).removeClass("active");
+      $("#pic"+(i+1)).addClass("active");
+      i++;
+      $("ol li").removeClass("active");
+      $("ol li:eq("+i+")").addClass("active");
+      
+      if(i>4){
+      	$("#pic"+(i-1)).removeClass("active");
+        $("#pic0").addClass("active");
+        i=0;
+        $("ol li:eq("+i+")").addClass("active");
+      
+      }
+       c = setTimeout(carousel,1000); //设定定时器，循环执行             
+    } 
+
+</script>
+	<div class="cfleft" style="width:950px;">
+		<div class="photo-list" style="width:500px;">
+			{% for p_item in p_items %}
+			<div class="square-photo-grid-wrapper">
+{#			{% for photo in p_item %}#}
+{#				<div class="square-photo-grid">#}
+{#					<a title="来自{{photo.owner.name}}" href="{{ request.HOME_PAGE_URL }}photos/{{photo.owner.id}}/{{photo.id}}/">#}
+{#					<img src="{{request.QINIU_IMG_URL}}{{photo.square_loc}}">#}
+{#					</a>#}
+{#				</div>#}
+{#			{% endfor %}#}
+			</div>
+			{% endfor %}
+		</div>
+
+		<div class="fright" style="margin-top:20px;width:450px;">
+		<h2 class="fleft" style="margin-bottom:10px;">分享照片 探索发现</h2>
+		<span class="fleft" >这是一个照片分享和探索的网站。在这里，你可以将生活的美好瞬间一一记录，并将这一美好分享和传递给你的朋友，并依此为引线寻到与你志趣相投的人。</span>
+		</div>
+	</div>
+
+
+</body>
+{% endblock %}
