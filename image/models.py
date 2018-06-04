@@ -8,8 +8,8 @@ from qiniu import Auth, put_data
 from mysite import settings
 
 bucket_name = 'photowall'
-access_key = 'j3fPccFI3N-QyDszgz1th3UOlFfLp5X5dipeFpxA'
-secret_key = 'KdhMLLHYSKhazH2qz6caCLlUFIUq6mmxojCYY-yZ'
+access_key = 'cbjqXDJKDDy9wy2sRRq2NulALQKhE7l6EZv9XV3S'
+secret_key = '6fZVQq_U4hxx-q6fQ69TfHUsBXlXACSoH9S2NToW'
 q = Auth(access_key, secret_key)
 
 

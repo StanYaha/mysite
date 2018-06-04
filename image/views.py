@@ -8,11 +8,12 @@ def uploadimg(request):
 
     if request.method == 'POST':
         photo_id_list = []
-        for i in request.FILES:
+        for i in request.FILES.getlist('pickup'):
+            print(i)
             photo = Photo()
             print(photo_id_list)
             # photo.save_photo_brief(request.FILES[i])
-            photo.save_photo_file(request.FILES[i])
+            photo.save_photo_file(i)
             photo_id_list.append(photo.id)
 
     return render(request, 'upload.html')

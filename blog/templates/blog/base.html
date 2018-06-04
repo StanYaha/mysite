@@ -33,7 +33,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-{% block title %}绿光照片分享{% endblock %}
+{% block title %}七牛蛋蛋团{% endblock %}
 </title>
     <link href="{% static "css/base.css" %}" rel="stylesheet">
 
@@ -62,10 +62,11 @@
 
 	<div class="nav">
 		<ul class="menu green-link">
-            <li><a href="{% url "image:hotsexplore" %}explore/">探索</a></li>
-            <li><a href="{% url "image:imaguploading" %}">相册</a></li>
+{#            <li><a href="{% url "image:hotsexplore" %}explore/">探索</a></li>#}
+{#            <li><a href="{% url "image:imaguploading" %}">相册</a></li>#}
+                        <li><a href="{% url "image:photowall" %}">照片墙</a></li>
+
 			<li><a href="{% url "blog:post_list" %}">博客</a></li>
-            <li><a href="{% url "image:photowall" %}">照片墙</a></li>
 
 		</ul>
 	</div>

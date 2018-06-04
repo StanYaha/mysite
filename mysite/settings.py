@@ -30,8 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-QINIU_IMG_URL = 'http://p8e5rqtf8.bkt.clouddn.com'
-QINIU_FILE_PREFIX = 'dandantuan'
+QINIU_IMG_URL = 'http://photowall.zhaojianfeng.cn'
+QINIU_FILE_PREFIX = 'hddandantuan'
 
 
 SITE_ID = 1
