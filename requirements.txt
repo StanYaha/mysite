@@ -8,7 +8,7 @@ ExifRead==2.1.2
 idna==2.6
 Markdown==2.6.2
 pili2==2.1.0
-Pillow==5.1.0
+Pillow==9.0.1
 pytz==2018.3
 qiniu==7.2.2
 requests==2.18.4
